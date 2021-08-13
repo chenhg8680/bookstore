@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>尚硅谷会员注册页面</title>
-		<!--写base标签，永远固定相对路径跳转的结果-->
-		<base href="http://localhost:8080/book/">
-
-		<link type="text/css" rel="stylesheet" href="static/css/style.css" >
-		<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+<%@ include file="/pages/common/header.jsp"%>
 		<script type="text/javascript">
 			// 页面加载完成之后
 			$(function () {
@@ -93,8 +86,6 @@
 		}
 
 	</style>
-	</head>
-	<body>
 		<div id="login_header">
 			<img class="logo_img" alt="" src="static/img/logo.gif" >
 		</div>
@@ -113,7 +104,7 @@
 								<span class="errorMsg"></span>
 							</div>
 							<div class="form">
-								<form action="registServlet" method="post">
+								<form action="regist" method="post">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
 										   value="wzg168"
@@ -151,10 +142,4 @@
 					</div>
 				</div>
 			</div>
-		<div id="bottom">
-			<span>
-				abc.Copyright &copy;2015
-			</span>
-		</div>
-	</body>
-</html>
+<%@ include file="/pages/common/footer.jsp"%>
