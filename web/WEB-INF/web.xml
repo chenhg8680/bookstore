@@ -4,27 +4,80 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     
+
     <servlet>
-        <servlet-name>RegistServlet</servlet-name>
-        <servlet-class>com.stark.web.RegistServlet</servlet-class>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>com.stark.web.UserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistServlet</servlet-name>
-        <url-pattern>/regist</url-pattern>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
     </servlet-mapping>
 
 
 
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.stark.web.LoginServlet</servlet-class>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.stark.web.BookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/manager/bookServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <servlet-class>com.stark.web.ClientBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <url-pattern>/client/bookServlet</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.stark.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.stark.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!-- /* 表示当前工程下所有请求 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--error-page标签配置，服务器出错之后，自动跳转的页面-->
+    <error-page>
+        <!--error-code是错误类型-->
+        <error-code>500</error-code>
+        <!--location标签表示。要跳转去的页面路径-->
+        <location>/pages/error/500.jsp</location>
+    </error-page>
+
+    <!--error-page标签配置，服务器出错之后，自动跳转的页面-->
+    <error-page>
+        <!--error-code是错误类型-->
+        <error-code>404</error-code>
+        <!--location标签表示。要跳转去的页面路径-->
+        <location>/pages/error/404.jsp</location>
+    </error-page>
 
 
     
